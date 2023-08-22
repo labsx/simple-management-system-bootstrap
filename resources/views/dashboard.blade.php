@@ -49,11 +49,11 @@
                             <i class="bi bi-house"></i> Dashboard
                         </a>
                     </li>
-                    <li class="nav-item">
+                    {{-- <li class="nav-item">
                         <a class="nav-link" href="#">
                             <i class="bi bi-bar-chart"></i> Student List
                         </a>
-                    </li>
+                    </li> --}}
                     <li class="nav-item">
                         <a class="nav-link" href="/staff">
                             <i class="bi bi-chat"></i> Staff Information
