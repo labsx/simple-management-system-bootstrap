@@ -1,13 +1,13 @@
 @include('component.header')
 
-{{-- 
+
   
     @if(session()->has('message'))
     <div class="alert alert-success text-center text-uppercase py-0"> 
     <p class="mt-3 text-red">{{session()->get('message')}}</p>
         </div>
  @endif
-<!-- Dashboard --> --}}
+<!-- Dashboard -->
 <div class="d-flex flex-column flex-lg-row h-lg-full bg-surface-secondary">
     <!-- Vertical Navbar -->
     <nav class="navbar show navbar-vertical h-lg-screen navbar-expand-lg px-0 py-3 navbar-light bg-white border-bottom border-bottom-lg-0 border-end-lg" id="navbarVertical">
@@ -110,13 +110,13 @@
                         
                         <div class="col-sm-6 col-12 text-sm-end">
                             <div class="mx-n1">
-                               
+{{--                                
                                 <a href="/studentreg" class="btn d-inline-flex btn-sm btn-primary mx-1">
                                     <span class=" pe-2">
                                         <i class="bi bi-plus"></i>
                                     </span>
                                     <span>Add Student</span>
-                                </a>
+                                </a> --}}
                                 <a href="/register" class="btn d-inline-flex btn-sm btn-primary mx-1">
                                     <span class=" pe-2">
                                         <i class="bi bi-plus"></i>
@@ -131,65 +131,94 @@
                         <li class="nav-item ">
                             {{-- <a href="#" class="nav-link active">Students Chart</a> --}}
                         </li>
-                        {{-- <li class="nav-item">
-                            <a href="#" class="nav-link font-regular">Shared</a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="#" class="nav-link font-regular">File requests</a>
-                        </li> --}}
+                
                     </ul>
                 </div>
             </div>
         </header>
         <!-- Main -->
         <main class="py-6 bg-surface-secondary">
-     
+
                 <div class="card shadow border-0 mb-7">
                     <div class="card-header">
-                        <h5 class="mb-0">Students List</h5>
+                        <h5 class="mb-0">Student Registration</h5>
                     </div>
                     <div class="table-responsive">
-                        <table class="table table-hover table-nowrap">
-                            <thead class="thead-light">
-                                <tr>
-                                    <th scope="col">Name</th>
-                                    <th scope="col">Address</th>
-                                    <th scope="col">Contact</th>
-                                    <th scope="col">Guardian</th>
-                                    <th scope="col" class="text-center">Manage</th>
-                                   
-                                    <th></th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                @foreach ($students as $student)
-                                    <td>
-                                        {{ $student->name }}
-                                    </td>
-                                    <td>
-                                        {{ $student->address }}
-                                    </td>
-                                    <td>
-                                        {{ $student->contact }}
-                                    </td>
-                                    <td>
-                                        {{ $student->guardian }}
-                                    </td>
-                                   
+                        
+                        <div class="container">
+                            <div class="row">
+                              <div class="col-md-6 offset-md-3 ">
+                                {{-- <h1 class="text-center text-dark mt-5">Login Form</h1> --}}
+                                
+                                <div class="card my-5">
+                        
+                                  <form action="/add/student" method="POST" class="card-body cardbody-color p-lg-5">
+                                    @csrf
+
+                                    <div class="mb-3">
+                                      <input type="text" class="form-control" name="name"  placeholder="Full Name">
+                                      <div>
+                                        @error('name')
+                                         <p style="font-size: x-small"  class="col-md-7 col-form-label text-md-right text-danger mb-3 ">{{$message}}</p>
+                                         @enderror
+                                    </div>
+                                    </div>
                                     
-                                    <td class="text-end">
-                                        <a href="#" class="btn btn-sm btn-neutral">View</a>
-                                        <button type="button" class="btn btn-sm btn-square btn-neutral text-danger-hover">
-                                            <i class="bi bi-trash"></i>
-                                        </button>
-                                    </td>
-                                </tr>
-                                @endforeach
-                            </tbody>
-                        </table>
+                
+                                    <div class="mb-3">
+                                        <input type="text" class="form-control" name="address" placeholder="Home Address">
+                                        <div>
+                                          @error('address')
+                                           <p style="font-size: x-small"  class="col-md-7 col-form-label text-md-right text-danger mb-3 ">{{$message}}</p>
+                                           @enderror
+                                      </div>
+                                      </div>
+                
+                                      <div class="mb-3">
+                                        <input type="text" class="form-control" name="contact"  placeholder="Contact">
+                                        <div>
+                                          @error('contact')
+                                           <p style="font-size: x-small"  class="col-md-7 col-form-label text-md-right text-danger mb-3 ">{{$message}}</p>
+                                           @enderror
+                                      </div>
+                                      </div>
+                
+                                      <div class="mb-3">
+                                        <input type="text" class="form-control" name="email"  placeholder="Email Address">
+                                        <div>
+                                          @error('email')
+                                           <p style="font-size: x-small"  class="col-md-7 col-form-label text-md-right text-danger mb-3 ">{{$message}}</p>
+                                           @enderror
+                                      </div>
+                                      </div>
+                                      <div class="mb-3">
+                                        <input type="text" class="form-control" name="guardian"  placeholder="Guardian">
+                                        <div>
+                                          @error('guardian')
+                                           <p style="font-size: x-small"  class="col-md-7 col-form-label text-md-right text-danger mb-3 ">{{$message}}</p>
+                                           @enderror
+                                      </div>
+                                      </div>
+                
+                                    
+                
+                                    <div class="text-center"><button type="submit" class="btn btn-color px-5 mb-5 w-100">Register</button></div>
+                  
+                                  </form>
+                                  @if(session()->has('message'))
+                                    <div class="alert alert-success text-center text-uppercase py-0"> 
+                                    <p class="mt-3">{{session()->get('message')}}</p>
+                                        </div>
+                                 @endif
+                                </div>
+                        
+                              </div>
+                            </div>
+                          </div>
+
                     </div>
                     <div class="card-footer border-0">
-                        <span class="">  {{$students->links()}}</span>
+                        {{-- <span class="">  {{$students->links()}}</span> --}}
                     </div>
                 </div>
             </div>

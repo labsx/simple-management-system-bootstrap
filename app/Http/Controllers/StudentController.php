@@ -9,7 +9,7 @@ use Illuminate\Validation\Rule;
 class StudentController extends Controller
 {
     public function student(){
-        return view ('sturegistration');
+        return view ('studentreg');
     }
 
     public function store(Request $request){

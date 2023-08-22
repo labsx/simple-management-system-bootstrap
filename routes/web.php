@@ -22,15 +22,21 @@ Route::post('/', [AdminController::class, 'process']);
 
  Route::post('logout', [AdminController::class, 'destroy']);
 
-Route::get('/register', function () {
-    return view('userregistration');
-});
+// Route::get('/register', function () {
+//     return view('userregistration');
+// });
 Route::post('/store', [AdminController::class, 'store']); 
 Route::get('/dashboard', [AdminController::class, 'display']); 
 
-// Route::get('/dashboard', function () {
-//     return view('dashboard');
-// });
+Route::get('/register', function () {
+    return view('staffreg');
+Route::get('/staff', [AdminController::class, 'staff']);
+});
 
-Route::get('/add/student', [StudentController::class, 'student']);
+ Route::get('/studentreg', [StudentController::class, 'student']);
 Route::post('/add/student', [StudentController::class, 'store']);
+
+Route::get('/staff', function () {
+    return view('staffinfo');
+});
+

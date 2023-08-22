@@ -31,21 +31,6 @@ class AdminController extends Controller
             return view ('index') ->with('message', 'username and password not match!');
         }
         
-        // $attributes = request()->validate([
-        //     'email' => 'required|email',
-        //     'password' => 'required'
-        // ]);
-       
-
-        // if (! auth()->attempt($attributes)) {
-        //     throw ValidationException::withMessages([
-        //         'email' => 'Your provided credentials could not be verified.'
-        //     ]);
-        // }
-
-        // session()->regenerate();
-
-        // return redirect('dashboard')->with('success', 'Welcome Back!');
     }
 
     public function store(Request $request){
@@ -73,5 +58,10 @@ class AdminController extends Controller
     public function display(){
         $data = array("students" => DB::table('students')->orderBy('created_at', 'desc')->simplePaginate(10));
         return view ('dashboard', $data);
+    }
+
+    public function staff(){
+        $data = array("users" => DB::table('users')->orderBy('created_at', 'desc')->simplePaginate(10));
+        return view ('staffinfo', $data);
     }
 }
