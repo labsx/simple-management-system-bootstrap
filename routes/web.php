@@ -4,6 +4,7 @@ use GuzzleHttp\Middleware;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\StudentController;
 
 /*
 |--------------------------------------------------------------------------
@@ -31,6 +32,5 @@ Route::get('/dashboard', [AdminController::class, 'display']);
 //     return view('dashboard');
 // });
 
-Route::get('/add/student', function () {
-    return view('sturegistration');
-});
+Route::get('/add/student', [StudentController::class, 'student']);
+Route::post('/add/student', [StudentController::class, 'store']);

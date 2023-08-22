@@ -8,7 +8,7 @@
                 
                 <div class="card my-5">
         
-                  <form action="/store" method="POST" class="card-body cardbody-color p-lg-5">
+                  <form action="/add/student" method="POST" class="card-body cardbody-color p-lg-5">
                     @csrf
                     <div class="form-text text-left mb-5 text-dark "> 
                       <a href="/dashboard" class="text-dark fw-bold "> Return to Dashboard</a>
@@ -21,28 +21,53 @@
         
                     <div class="mb-3">
                       <input type="text" class="form-control" name="name"  placeholder="Full Name">
+                      <div>
+                        @error('name')
+                         <p style="font-size: x-small"  class="col-md-7 col-form-label text-md-right text-danger mb-3 ">{{$message}}</p>
+                         @enderror
                     </div>
+                    </div>
+                    
 
                     <div class="mb-3">
                         <input type="text" class="form-control" name="address" placeholder="Home Address">
+                        <div>
+                          @error('address')
+                           <p style="font-size: x-small"  class="col-md-7 col-form-label text-md-right text-danger mb-3 ">{{$message}}</p>
+                           @enderror
+                      </div>
                       </div>
 
                       <div class="mb-3">
                         <input type="text" class="form-control" name="contact"  placeholder="Contact">
+                        <div>
+                          @error('contact')
+                           <p style="font-size: x-small"  class="col-md-7 col-form-label text-md-right text-danger mb-3 ">{{$message}}</p>
+                           @enderror
+                      </div>
                       </div>
 
                       <div class="mb-3">
                         <input type="text" class="form-control" name="email"  placeholder="Email Address">
+                        <div>
+                          @error('email')
+                           <p style="font-size: x-small"  class="col-md-7 col-form-label text-md-right text-danger mb-3 ">{{$message}}</p>
+                           @enderror
+                      </div>
+                      </div>
+                      <div class="mb-3">
+                        <input type="text" class="form-control" name="guardian"  placeholder="Guardian">
+                        <div>
+                          @error('guardian')
+                           <p style="font-size: x-small"  class="col-md-7 col-form-label text-md-right text-danger mb-3 ">{{$message}}</p>
+                           @enderror
+                      </div>
                       </div>
 
-                    <div class="mb-3">
-                      <input type="text" class="form-control" name="guardian" placeholder="Guardian">
-                    </div>
-                    <div class="text-center"><button type="submit" class="btn btn-color px-5 mb-5 w-100">Register</button></div>
-                   
-                   
                     
-                   
+
+                    <div class="text-center"><button type="submit" class="btn btn-color px-5 mb-5 w-100">Register</button></div>
+  
                   </form>
                   @if(session()->has('message'))
                     <div class="alert alert-success text-center text-uppercase py-0"> 
